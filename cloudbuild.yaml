@@ -14,6 +14,5 @@ steps:
       - '-c'
       - |
         gcloud compute scp --recurse ./* vm-2:/var/www/html/ --zone=me-central1-a
-
-      options:
+options:
   logging: CLOUD_LOGGING_ONLY
