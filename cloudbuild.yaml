@@ -1,18 +1,13 @@
 steps:
-  # Step 1: Copy files to VM-1
+  # Step 1: Get any VM from Auto Scaling group
+  # Step 2: Copy files to Filestore via that VM
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        gcloud compute scp --recurse ./* vm-1:/var/www/html/ --zone=me-central1-a
+        VM_NAME=$(gcloud compute instance-groups list-instances renad-mig --zone=me-central1-a --format="value(instance)" | head -1)
+        gcloud compute scp --recurse ./* $VM_NAME:/mnt/shared/ --zone=me-central1-a
 
-  # Step 2: Copy files to VM-2
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        gcloud compute scp --recurse ./* vm-2:/var/www/html/ --zone=me-central1-a
 options:
   logging: CLOUD_LOGGING_ONLY
