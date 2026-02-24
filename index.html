@@ -14,15 +14,35 @@
             color: white;
             text-align: center;
         }
-        h1 { font-size: 3em; }
-        p { font-size: 1.5em; }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+        }
+        h1 { font-size: 3em; margin-bottom: 10px; }
+        p { font-size: 1.5em; margin: 10px 0; }
+        .login-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .login-btn:hover {
+            background: #f0f0f0;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Welcome to Renad's Website!, new verison :))) </h1>
+    <div class="container">
+        <h1>Welcome to Renad's Website!</h1>
         <p>Deployed on Google Cloud Platform</p>
-        <p>Load Balancer + 2 VMs + PostgreSQL + Filestore</p>
+        <p>Load Balancer + Auto Scaling + PostgreSQL + Filestore</p>
+        <a href="/app/" class="login-btn">Login</a>
     </div>
 </body>
 </html>
